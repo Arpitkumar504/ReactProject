@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
 import Constant from "../helper/constant";
+import { BaseUrl } from "../helper/BaseUrl";
+import { ApiUrl } from "../helper/ApiUrl";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -75,7 +77,7 @@ const SignUp = () => {
     formData.append("email", formdata.email);
     formData.append("password", formdata.password);
     formData.append("image", formdata.image);
-    const apiUrl = "http://localhost:8080/api/signUp";
+    const apiUrl = BaseUrl.SERVER_URL + ApiUrl.SIGN_UP;
     const config = {
       headers: {
         "Content-Type": "multipart/form-data",
@@ -102,7 +104,7 @@ const SignUp = () => {
     };
     console.log("inside login");
     console.log("request data of login -------- ", requestData);
-    const apiUrl = "http://localhost:8080/api/login";
+    const apiUrl = BaseUrl.SERVER_URL + ApiUrl.LOGIN;
     const config = {
       headers: {
         "Content-Type": "application/json",

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { BaseUrl } from "../helper/BaseUrl";
+import { ApiUrl } from "../helper/ApiUrl";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -12,7 +14,7 @@ const ProductDetail = () => {
 
   const getProducts = async () => {
     console.log("inside get products");
-    const apiUrl = "http://localhost:8080/api/products/" + id;
+    const apiUrl = BaseUrl.SERVER_URL + ApiUrl.ADD_PRODUCT + "/" + id;
     console.log("api url of to get specific product--- ", apiUrl);
     const response = await axios.get(apiUrl);
     console.log("response of get specific product api--- ", response?.data);

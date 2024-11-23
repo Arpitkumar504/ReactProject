@@ -3,6 +3,8 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Card from "../component/Card";
+import { ApiUrl } from "../helper/ApiUrl";
+import { BaseUrl } from "../helper/BaseUrl";
 
 const Product = () => {
   const [response, setAllProducts] = useState([]);
@@ -11,7 +13,7 @@ const Product = () => {
   }, []);
   const getProducts = async () => {
     console.log("inside get products");
-    const apiUrl = "http://localhost:8080/api/products/";
+    const apiUrl = BaseUrl.SERVER_URL + ApiUrl.ADD_PRODUCT;
     const response = await axios.get(apiUrl);
     console.log("response of get all product api--- ", response?.data);
     setAllProducts(response?.data);
@@ -19,7 +21,7 @@ const Product = () => {
 
   const deleteProduct = async (id) => {
     console.log("inside get products");
-    const apiUrl = "http://localhost:8080/api/products/" + id;
+    const apiUrl = BaseUrl.SERVER_URL + ApiUrl.ADD_PRODUCT + "/" + id;
     const response = await axios.delete(apiUrl);
     console.log("response of delete product api--- ", response);
     // setAllProducts(response?.data);

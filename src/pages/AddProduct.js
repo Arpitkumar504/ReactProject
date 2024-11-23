@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
+import { BaseUrl } from "../helper/BaseUrl";
+import { ApiUrl } from "../helper/ApiUrl";
 
 const AddProduct = () => {
   const [formData, setFormData] = useState({
@@ -31,7 +33,7 @@ const AddProduct = () => {
       thumbnail: formData.thumbnail,
     };
     console.log("inside add products");
-    const apiUrl = "http://localhost:8080/api/products/";
+    const apiUrl = BaseUrl.SERVER_URL + ApiUrl.ADD_PRODUCT;
     console.log("api url of to get specific product--- ", apiUrl);
     const response = await axios.post(apiUrl, requestData);
     console.log("response of add product api----- ", response);
